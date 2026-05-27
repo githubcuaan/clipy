@@ -23,7 +23,7 @@ backend_launch_terminal() {
   local cmd="$1"
   local w="$2"
   local h="$3"
-  exec kitty --class fuzzel --title "Clipboard" \
+  exec $CLIPY_TERMINAL --class fuzzel --title "Clipboard" \
     -o remember_window_size=no \
     -o initial_window_width="$w" \
     -o initial_window_height="$h" \
