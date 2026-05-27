@@ -11,9 +11,9 @@ preview_cmd="$CLIPY_DIR/clipy-preview.sh {}"
 chosen=$(echo "$items" | fzf \
   --prompt="$CLIPY_FZF_PROMPT" \
   --preview="$preview_cmd" \
-  --preview-window="$CLIPMENU_FZF_PREVIEW_OPTS" \
+  --preview-window="$CLIPY_FZF_PREVIEW_OPTS" \
   --bind='ctrl-d:execute(echo {} | cliphist delete)+reload(cliphist list)' \
-  --header 'Ctrl-D: delete entry | Enter: copy')
+  --header '󱫊 Ctrl-D: delete entry | 󱫆 Enter: copy')
 
 [ -z "$chosen" ] && exit 0
 
