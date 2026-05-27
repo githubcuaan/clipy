@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 SCRIPT_DIR="$(cd "$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")" && pwd)"
-source "$SCRIPT_DIR/lib/backend.sh"
+source "$SCRIPT_DIR/backend.sh"
 
 case "${1:-}" in
   --version|-v)

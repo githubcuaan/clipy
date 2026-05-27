@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 SCRIPT_DIR="$(cd "$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")" && pwd)"
-source "$SCRIPT_DIR/lib/backend.sh"
-source "$SCRIPT_DIR/lib/autopaste.sh"
+source "$SCRIPT_DIR/backend.sh"
+source "$SCRIPT_DIR/autopaste.sh"
 
 items=$(cliphist list)
 [ -z "$items" ] && exit 1

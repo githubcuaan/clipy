@@ -78,7 +78,7 @@ clipy --version  # print version
 ## Backends
 
 Currently supports **Hyprland**. Extensible via `lib/backends/<name>.sh`.
-Drop-in a new backend with `backend_monitor_size`, `backend_find_window`, and `backend_launch_terminal` functions.
+Drop-in a new file `src/backends/<name>.sh` with `backend_monitor_size`, `backend_find_window`, and `backend_launch_terminal` functions.
 
 ## License
 

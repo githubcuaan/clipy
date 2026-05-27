@@ -9,9 +9,10 @@ BIN_DIR="$PREFIX/bin"
 install_clipy() {
   mkdir -p "$SHARE_DIR/lib/backends" "$BIN_DIR"
 
-  cp "$SCRIPT_DIR/clipy.sh" "$SCRIPT_DIR/clipy-preview.sh" \
-     "$SCRIPT_DIR/clipy-launch.sh" "$SCRIPT_DIR/clipy-toggle.sh" "$SHARE_DIR/"
-  cp -r "$SCRIPT_DIR/lib/"* "$SHARE_DIR/lib/"
+  cp "$SCRIPT_DIR/src/clipy.sh" "$SCRIPT_DIR/src/clipy-preview.sh" \
+     "$SCRIPT_DIR/src/clipy-launch.sh" "$SCRIPT_DIR/src/clipy-toggle.sh" \
+     "$SCRIPT_DIR/src/backend.sh" "$SCRIPT_DIR/src/autopaste.sh" "$SHARE_DIR/"
+  cp -r "$SCRIPT_DIR/src/backends" "$SHARE_DIR/"
   ln -sf "$SHARE_DIR/clipy-toggle.sh" "$BIN_DIR/clipy"
 
   echo "Installed to $SHARE_DIR"

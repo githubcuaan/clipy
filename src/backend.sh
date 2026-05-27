@@ -1,8 +1,8 @@
 CLIPY_VERSION="0.1.0"
-CLIPY_DIR="${CLIPY_DIR:-$(cd "$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")/.." && pwd)}"
+CLIPY_DIR="${CLIPY_DIR:-$(cd "$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")" && pwd)}"
 CLIPY_BACKEND="${CLIPY_BACKEND:-hyprland}"
 
-source "$CLIPY_DIR/lib/backends/$CLIPY_BACKEND.sh"
+source "$CLIPY_DIR/backends/$CLIPY_BACKEND.sh"
 
 CLIPY_FZF_PROMPT="${CLIPY_FZF_PROMPT:- clipy > }"
 CLIPY_FZF_PREVIEW_OPTS="${CLIPY_FZF_PREVIEW_OPTS:-right:55%:wrap:border}"
