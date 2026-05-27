@@ -16,7 +16,7 @@ chosen=$(echo "$items" | fzf \
 
 [ -z "$chosen" ] && exit 0
 
-echo "$chosen" | cliphist decode | wl-copy
+echo "$chosen" | cliphist decode | wl-copy >/dev/null 2>&1
 
 if [ "$CLIPMENU_AUTOPASTE" = true ]; then
   (sleep "$CLIPMENU_AUTOPASTE_DELAY"; wtype -M ctrl v -m ctrl) &>/dev/null & disown
