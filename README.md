@@ -1,7 +1,7 @@
 # clipy
 
 <p align="center">
-  <img src="docs/cliplogo.png" alt="clipy logo" width="200">
+  <img src="docs/clipylogo.png" alt="clipy logo" width="200">
 </p>
 
 <p align="center">
@@ -10,10 +10,6 @@
 
 Clipboard history picker for Wayland. Fuzzy search, image preview, auto-paste.
 **Note**: We **ONLY support Hyprland** for now, but the backend is designed to be extensible. Contributions welcome!
-
-<p align="center">
-  <img src="docs/demo.gif" alt="demo" width="600">
-</p>
 
 ## Dependencies
 
@@ -69,15 +65,15 @@ clipy --version  # print version
 
 | Var                         | Default                      | Description                       |
 | --------------------------- | ---------------------------- | --------------------------------- |
-| `CLIPMENU_TERMINAL`         | `kitty`                      | Terminal for overlay              |
-| `CLIPMENU_WINDOW_CLASS`     | `fuzzel`                     | Window class for toggle detection |
-| `CLIPMENU_WINDOW_TITLE`     | `Clipboard`                  | Window title for toggle detection |
-| `CLIPMENU_MONITOR_RATIO`    | `0.5`                        | Overlay window size ratio         |
-| `CLIPMENU_AUTOPASTE`        | `true`                       | Auto-paste after selection        |
-| `CLIPMENU_AUTOPASTE_DELAY`  | `0.5`                        | Seconds before paste              |
-| `CLIPMENU_FZF_PROMPT`       | `clipboard > `               | fzf prompt                        |
-| `CLIPMENU_FZF_PREVIEW_OPTS` | `right:65%:wrap:border-left` | fzf preview layout                |
-| `CLIPMENU_BACKEND`          | `hyprland`                   | Backend (extensible)              |
+| `CLIPY_TERMINAL`         | `kitty`                      | Terminal for overlay              |
+| `CLIPY_WINDOW_CLASS`     | `fuzzel`                     | Window class for toggle detection |
+| `CLIPY_WINDOW_TITLE`     | `Clipboard`                  | Window title for toggle detection |
+| `CLIPY_MONITOR_RATIO`    | `0.5`                        | Overlay window size ratio         |
+| `CLIPY_AUTOPASTE`        | `true`                       | Auto-paste after selection        |
+| `CLIPY_AUTOPASTE_DELAY`  | `0.5`                        | Seconds before paste              |
+| `CLIPY_FZF_PROMPT`       | `clipboard > `               | fzf prompt                        |
+| `CLIPY_FZF_PREVIEW_OPTS` | `right:65%:wrap:border-left` | fzf preview layout                |
+| `CLIPY_BACKEND`          | `hyprland`                   | Backend (extensible)              |
 
 ## Backends
 
