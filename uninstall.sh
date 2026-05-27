@@ -6,7 +6,7 @@ SHARE_DIR="$PREFIX/share/clipy"
 BIN_DIR="$PREFIX/bin"
 HYPR_DIR="$HOME/.config/hypr"
 HYPR_CONF="$HYPR_DIR/hyprland.conf"
-CLIPMENU_CONF="$HYPR_DIR/clipy.conf"
+CLIPY_CONF="$HYPR_DIR/clipy.conf"
 
 echo "=== Uninstalling clipy ==="
 
@@ -22,8 +22,8 @@ if [ -d "$SHARE_DIR" ]; then
   removed_any=true
 fi
 
-if [ -f "$CLIPMENU_CONF" ]; then
-  rm -v "$CLIPMENU_CONF"
+if [ -f "$CLIPY_CONF" ]; then
+  rm -v "$CLIPY_CONF"
   removed_any=true
 fi
 
