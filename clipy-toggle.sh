@@ -4,7 +4,7 @@ source "$SCRIPT_DIR/lib/backend.sh"
 
 case "${1:-}" in
   --version|-v)
-    echo "clipmenu $CLIPMENU_VERSION"
+    echo "clipy $CLIPY_VERSION"
     exit 0
     ;;
 esac
@@ -14,5 +14,5 @@ pid=$(backend_find_window)
 if [ -n "$pid" ]; then
   kill -9 "$pid"
 else
-  exec "$CLIPMENU_DIR/clipmenu-launch.sh"
+  exec "$CLIPY_DIR/clipy-launch.sh"
 fi

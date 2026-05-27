@@ -6,7 +6,7 @@ source "$SCRIPT_DIR/lib/autopaste.sh"
 items=$(cliphist list)
 [ -z "$items" ] && exit 1
 
-preview_cmd="$CLIPMENU_DIR/clipmenu-preview.sh {}"
+preview_cmd="$CLIPY_DIR/clipy-preview.sh {}"
 
 chosen=$(echo "$items" | fzf \
   --prompt="$CLIPMENU_FZF_PROMPT" \

@@ -2,14 +2,14 @@ backend_monitor_size() {
   hyprctl monitors -j | python3 -c "
 import json, sys
 m = json.load(sys.stdin)[0]
-ratio = float('${CLIPMENU_MONITOR_RATIO:-0.5}')
+ratio = float('${CLIPY_MONITOR_RATIO:-0.5}')
 print(int(m['width'] * ratio), int(m['height'] * ratio))
 "
 }
 
 backend_find_window() {
-  local class="${1:-${CLIPMENU_WINDOW_CLASS:-fuzzel}}"
-  local title="${2:-${CLIPMENU_WINDOW_TITLE:-Clipboard}}"
+  local class="${1:-${CLIPY_WINDOW_CLASS:-fuzzel}}"
+  local title="${2:-${CLIPY_WINDOW_TITLE:-Clipboard}}"
   hyprctl clients -j | python3 -c "
 import json, sys
 for w in json.load(sys.stdin):

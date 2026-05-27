@@ -1,16 +1,31 @@
-# clipmenu
+# clipy
+
+<p align="center">
+  <img src="docs/cliplogo.png" alt="clipy logo" width="200">
+</p>
+
+<p align="center">
+ <a href="#install">Install</a> · <a href="#usage">Usage</a> · <a href="#configuration-env-vars">Config</a> · <a href="#backends">Backends</a> · <a href="#license">License</a>
+</p>
 
 Clipboard history picker for Wayland. Fuzzy search, image preview, auto-paste.
+**Note**: We **ONLY support Hyprland** for now, but the backend is designed to be extensible. Contributions welcome!
+
+<p align="center">
+  <img src="docs/demo.gif" alt="demo" width="600">
+</p>
 
 ## Dependencies
 
 **Required**
+
 - `cliphist` — clipboard history backend
 - `wl-clipboard` (wl-copy/wl-paste) — Wayland clipboard
 - `fzf` — fuzzy finder UI
 - `python3` — JSON parsing
 
 **Optional**
+
 - `wtype` — auto-paste after selection (enabled by default)
 - `chafa` — image preview in fzf
 - `bat` — syntax-highlighted text preview
@@ -19,8 +34,8 @@ Clipboard history picker for Wayland. Fuzzy search, image preview, auto-paste.
 ## Install
 
 ```sh
-git clone https://github.com/YOUR_USER/clipmenu
-cd clipmenu
+git clone https://github.com/YOUR_USER/clipy
+cd clipy
 ./install.sh
 ```
 
@@ -32,7 +47,7 @@ Default prefix: `~/.local`. Override with `PREFIX=/usr ./install.sh`.
 ./install.sh --install-config
 ```
 
-Copies `examples/hyprland.conf` → `~/.config/hypr/clipmenu.conf`
+Copies `examples/hyprland.conf` → `~/.config/hypr/clipy.conf`
 and adds `source =` to `hyprland.conf`. Run `hyprctl reload` to apply.
 
 ### Uninstall
@@ -46,23 +61,23 @@ Removes all installed files and reverts hyprland.conf changes.
 ## Usage
 
 ```
-clipmenu            # toggle clipboard picker
-clipmenu --version  # print version
+clipy            # toggle clipboard picker
+clipy --version  # print version
 ```
 
 ## Configuration (env vars)
 
-| Var | Default | Description |
-|-----|---------|-------------|
-| `CLIPMENU_TERMINAL` | `kitty` | Terminal for overlay |
-| `CLIPMENU_WINDOW_CLASS` | `fuzzel` | Window class for toggle detection |
-| `CLIPMENU_WINDOW_TITLE` | `Clipboard` | Window title for toggle detection |
-| `CLIPMENU_MONITOR_RATIO` | `0.5` | Overlay window size ratio |
-| `CLIPMENU_AUTOPASTE` | `true` | Auto-paste after selection |
-| `CLIPMENU_AUTOPASTE_DELAY` | `0.5` | Seconds before paste |
-| `CLIPMENU_FZF_PROMPT` | `clipboard > ` | fzf prompt |
-| `CLIPMENU_FZF_PREVIEW_OPTS` | `right:65%:wrap:border-left` | fzf preview layout |
-| `CLIPMENU_BACKEND` | `hyprland` | Backend (extensible) |
+| Var                         | Default                      | Description                       |
+| --------------------------- | ---------------------------- | --------------------------------- |
+| `CLIPMENU_TERMINAL`         | `kitty`                      | Terminal for overlay              |
+| `CLIPMENU_WINDOW_CLASS`     | `fuzzel`                     | Window class for toggle detection |
+| `CLIPMENU_WINDOW_TITLE`     | `Clipboard`                  | Window title for toggle detection |
+| `CLIPMENU_MONITOR_RATIO`    | `0.5`                        | Overlay window size ratio         |
+| `CLIPMENU_AUTOPASTE`        | `true`                       | Auto-paste after selection        |
+| `CLIPMENU_AUTOPASTE_DELAY`  | `0.5`                        | Seconds before paste              |
+| `CLIPMENU_FZF_PROMPT`       | `clipboard > `               | fzf prompt                        |
+| `CLIPMENU_FZF_PREVIEW_OPTS` | `right:65%:wrap:border-left` | fzf preview layout                |
+| `CLIPMENU_BACKEND`          | `hyprland`                   | Backend (extensible)              |
 
 ## Backends
 

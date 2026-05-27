@@ -3,28 +3,28 @@ set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")" && pwd)"
 PREFIX="${PREFIX:-$HOME/.local}"
-SHARE_DIR="$PREFIX/share/clipmenu"
+SHARE_DIR="$PREFIX/share/clipy"
 BIN_DIR="$PREFIX/bin"
 
-install_clipmenu() {
+install_clipy() {
   mkdir -p "$SHARE_DIR/lib/backends" "$BIN_DIR"
 
-  cp "$SCRIPT_DIR/clipmenu.sh" "$SCRIPT_DIR/clipmenu-preview.sh" \
-     "$SCRIPT_DIR/clipmenu-launch.sh" "$SCRIPT_DIR/clipmenu-toggle.sh" "$SHARE_DIR/"
+  cp "$SCRIPT_DIR/clipy.sh" "$SCRIPT_DIR/clipy-preview.sh" \
+     "$SCRIPT_DIR/clipy-launch.sh" "$SCRIPT_DIR/clipy-toggle.sh" "$SHARE_DIR/"
   cp -r "$SCRIPT_DIR/lib/"* "$SHARE_DIR/lib/"
-  ln -sf "$SHARE_DIR/clipmenu-toggle.sh" "$BIN_DIR/clipmenu"
+  ln -sf "$SHARE_DIR/clipy-toggle.sh" "$BIN_DIR/clipy"
 
   echo "Installed to $SHARE_DIR"
-  echo "Symlink: $BIN_DIR/clipmenu -> $SHARE_DIR/clipmenu-toggle.sh"
+  echo "Symlink: $BIN_DIR/clipy -> $SHARE_DIR/clipy-toggle.sh"
   echo ""
   echo "Make sure $BIN_DIR is in your PATH."
-  echo "Set keybind: exec $BIN_DIR/clipmenu"
+  echo "Set keybind: exec $BIN_DIR/clipy"
 }
 
 install_config() {
   local hypr_dir="$HOME/.config/hypr"
   local hypr_conf="$hypr_dir/hyprland.conf"
-  local clipmenu_conf="$hypr_dir/clipmenu.conf"
+  local clipy_conf="$hypr_dir/clipy.conf"
   local example_conf="$SCRIPT_DIR/examples/hyprland.conf"
 
   if [ ! -f "$example_conf" ]; then
@@ -33,35 +33,35 @@ install_config() {
   fi
 
   mkdir -p "$hypr_dir"
-  cp "$example_conf" "$clipmenu_conf"
-  echo "Copied config → $clipmenu_conf"
+  cp "$example_conf" "$clipy_conf"
+  echo "Copied config → $clipy_conf"
 
   if [ ! -f "$hypr_conf" ]; then
     echo "Warning: $hypr_conf not found. Skipping source injection." >&2
     return
   fi
 
-  if grep -q 'source.*clipmenu\.conf' "$hypr_conf"; then
+  if grep -q 'source.*clipy\.conf' "$hypr_conf"; then
     echo "Source line already present in $hypr_conf. Skipping."
     return
   fi
 
   cat >> "$hypr_conf" <<'EOF'
 
-# clipmenu
-source = ~/.config/hypr/clipmenu.conf
+# clipy
+source = ~/.config/hypr/clipy.conf
 EOF
-  echo "Added 'source = ~/.config/hypr/clipmenu.conf' → $hypr_conf"
+  echo "Added 'source = ~/.config/hypr/clipy.conf' → $hypr_conf"
   echo "Run 'hyprctl reload' to apply."
 }
 
 case "${1:-}" in
   --install-config)
-    install_clipmenu
+    install_clipy
     echo ""
     install_config
     ;;
   *)
-    install_clipmenu
+    install_clipy
     ;;
 esac
