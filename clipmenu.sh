@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+SCRIPT_DIR="$(cd "$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")" && pwd)"
+source "$SCRIPT_DIR/lib/backend.sh"
+
+items=$(cliphist list)
+[ -z "$items" ] && exit 1
+
+preview_cmd="$CLIPMENU_DIR/clipmenu-preview.sh {}"
+
+chosen=$(echo "$items" | fzf \
+  --prompt="$CLIPMENU_FZF_PROMPT" \
+  --preview="$preview_cmd" \
+  --preview-window="$CLIPMENU_FZF_PREVIEW_OPTS" \
+  --bind='ctrl-d:execute(echo {} | cliphist delete)+reload(cliphist list)' \
+  --header 'Ctrl-D: delete entry | Enter: copy')
+
+[ -z "$chosen" ] && exit 0
+
+echo "$chosen" | cliphist decode | wl-copy
+
+if [ "$CLIPMENU_AUTOPASTE" = true ]; then
+  (sleep "$CLIPMENU_AUTOPASTE_DELAY"; wtype -M ctrl v -m ctrl) &>/dev/null & disown
+fi
