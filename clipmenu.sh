@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 SCRIPT_DIR="$(cd "$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")" && pwd)"
 source "$SCRIPT_DIR/lib/backend.sh"
+source "$SCRIPT_DIR/lib/autopaste.sh"
 
 items=$(cliphist list)
 [ -z "$items" ] && exit 1
@@ -19,6 +20,4 @@ chosen=$(echo "$items" | fzf \
 echo "$chosen" | cliphist decode | wl-copy >/dev/null 2>&1
 wl-paste -l >/dev/null
 
-if [ "$CLIPMENU_AUTOPASTE" = true ]; then
-  hyprctl dispatch exec "sleep $CLIPMENU_AUTOPASTE_DELAY && wtype -M ctrl v -m ctrl"
-fi
+auto_paste
