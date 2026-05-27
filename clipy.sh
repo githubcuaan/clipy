@@ -9,7 +9,7 @@ items=$(cliphist list)
 preview_cmd="$CLIPY_DIR/clipy-preview.sh {}"
 
 chosen=$(echo "$items" | fzf \
-  --prompt="$CLIPMENU_FZF_PROMPT" \
+  --prompt="$CLIPY_FZF_PROMPT" \
   --preview="$preview_cmd" \
   --preview-window="$CLIPMENU_FZF_PREVIEW_OPTS" \
   --bind='ctrl-d:execute(echo {} | cliphist delete)+reload(cliphist list)' \
