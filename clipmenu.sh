@@ -17,7 +17,8 @@ chosen=$(echo "$items" | fzf \
 [ -z "$chosen" ] && exit 0
 
 echo "$chosen" | cliphist decode | wl-copy >/dev/null 2>&1
+wl-paste -l >/dev/null
 
 if [ "$CLIPMENU_AUTOPASTE" = true ]; then
-  (sleep "$CLIPMENU_AUTOPASTE_DELAY"; wtype -M ctrl v -m ctrl) &>/dev/null & disown
+  hyprctl dispatch exec "sleep $CLIPMENU_AUTOPASTE_DELAY && wtype -M ctrl v -m ctrl"
 fi
