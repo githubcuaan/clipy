@@ -26,15 +26,28 @@ cd clipmenu
 
 Default prefix: `~/.local`. Override with `PREFIX=/usr ./install.sh`.
 
+### Hyprland config (automatic)
+
+```sh
+./install.sh --install-config
+```
+
+Copies `examples/hyprland.conf` → `~/.config/hypr/clipmenu.conf`
+and adds `source =` to `hyprland.conf`. Run `hyprctl reload` to apply.
+
+### Uninstall
+
+```sh
+./uninstall.sh
+```
+
+Removes all installed files and reverts hyprland.conf changes.
+
 ## Usage
 
 ```
-clipmenu          # toggle clipboard picker
-```
-
-Set keybind in Hyprland:
-```
-bind = SUPER CTRL, V, exec, clipmenu
+clipmenu            # toggle clipboard picker
+clipmenu --version  # print version
 ```
 
 ## Configuration (env vars)
